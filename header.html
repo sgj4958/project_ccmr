@@ -61,6 +61,13 @@
             transition: .4s;
             transform: translateY(-50px); 
         }
+        #side_menu li:hover {animation: jelly 0.5s;}
+        @keyframes jelly {
+            0%, 100% {transform: scale(1, 1);}
+            25% {transform: scale(0.9, 1.1);}
+            50% {transform: scale(1.1, 0.9);}
+            75% {transform: scale(0.95, 1.05);}
+        }
         #side_menu li a {position: absolute; width: 200%; height: 100%; color: #fff; left: -100%; font-size: 1.2em; transition: .5s;}
         #side_menu li a:hover {color: #ffd000;}
         #side_menu li:nth-child(1) {background-image: url(graphic/icon_sidemenu_1.png);}
