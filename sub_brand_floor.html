@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        #main {background-color: #fff;}
+        .main_box {background-color: transparent;}
+        #sub_navigation a:nth-of-type(4) li {color: #ffd000;}
+        #main .main_box:nth-of-type(2) {height: auto; padding-left: 27%;}
+        #title {background-image: url(graphic/icon_floor.png); margin-top: 5%;}
+        
+        .map {
+            width: 450px;
+            height: 591px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-block;
+            position: relative;
+            border: 1px solid #ffd000;
+            box-sizing: border-box;
+            box-shadow: 0 76px 65px 0 hsla(0,0%,45%,.5);
+            animation: map .5s 1;
+        }
+        @keyframes map {
+            50% {transform: scale(.8);}
+        }
+        .img {display: inline-block; position: relative; top: -50px; left: -4px; text-align: center;}
+        .img img {border-bottom: 5px solid #ffd000; animation: scissor .5s 1;}
+        @keyframes scissor {
+            50% {transform: translateX(30px) rotate(3deg); transform-origin: bottom;}
+        }
+        .img .thumbnail {
+            width: 100px; 
+            height: 100px; 
+            background-size: cover; 
+            display: inline-block;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .anchor a {
+            display: block;
+            position: absolute;
+            background: transparent;
+            cursor: pointer;
+        }
+        .anchor a:hover {opacity: 0; animation: anchor 1s infinite;}
+        @keyframes anchor {
+            50% {background: radial-gradient(#fff, transparent); opacity: 1;}
+        }
+        .anchor~div::first-line {color: #ffd000; font-size: 2em;}
+        .desc {position: absolute; bottom: 20%; padding: 5%;}
+        #floor {
+            position: absolute;
+            left: 8%; 
+            top: 40%;
+            background-image: url(graphic/stair.png);
+            width: 200px; 
+            height: 276px; 
+            background-size: contain; 
+            background-repeat: no-repeat;
+        }
+        #floor p {font-size: 2em; text-align: center; color: #000; margin-top: -40px; cursor: pointer; animation: floor_p 3s infinite;}
+        #floor p:last-of-type {margin-top: 90px;}
+        @keyframes floor_p {
+            0% {transform: rotate(0deg);}
+            30% {transform: rotate(10deg);}
+            45% {transform: rotate(-5deg);}
+            50% {transform: rotate(3deg);}
+            60% {transform: rotate(-1deg);}
+            70% {transform: rotate(0deg);}
+            100% {}
+        }
+        
+        #f1 .map {background-image: url(graphic/floor_1f_1.png);}
+        #f1 .anchor a:nth-child(1) {
+            left: 34%;
+            top: 34%;
+            right: auto;
+            bottom: auto;
+            width: 14.21428571rem;
+            height: 7.57142857rem;
+        }
+        #f1 .anchor a:nth-child(2) {
+            left: 62.5%;
+            top: 21%;
+            right: auto;
+            bottom: auto;
+            width: 3.21428571rem;
+            height: 2.42857143rem;
+        }
+        #f1 .anchor a:nth-child(3) {
+            left: 15%;
+            top: 44%;
+            right: auto;
+            bottom: auto;
+            width: 5.14285714rem;
+            height: 3.71428571rem;
+        }
+        #f2 .map {background-image: url(graphic/floor_2f_1.png);}
+        #f2 .anchor a:nth-child(1) {
+            left: 42%;
+            top: 19%;
+            right: auto;
+            bottom: auto;
+            width: 10.28571429rem;
+            height: 1.35714286rem;
+        }
+        #f2 .anchor a:nth-child(2) {
+            left: 17%;
+            top: 35%;
+            right: auto;
+            bottom: auto;
+            width: 5.07142857rem;
+            height: 7.21428571rem;
+        }
+        #f2 .anchor a:nth-child(3) {
+            left: 35%;
+            top: 25%;
+            right: auto;
+            bottom: auto;
+            width: 15.35714286rem;
+            height: 6.14285714rem;
+        }
+        #f3 .map {background-image: url(graphic/floor_3f_1.png);}
+        #f3 .anchor a:nth-child(1) {
+            left: 38%;
+            top: 28%;
+            right: auto;
+            bottom: auto;
+            width: 10.57142857rem;
+            height: 1.57142857rem;
+        }
+        #f3 .anchor a:nth-child(2) {
+            left: 56%;
+            top: 35%;
+            right: auto;
+            bottom: auto;
+            width: 8.42857143rem;
+            height: 6.92857143rem;
+        }
+        #f0 .map {background-image: url(graphic/floor_b1_1.png);}
+        #f0 .anchor a:nth-child(1) {
+            left: 6.5rem;
+            top: 7rem;
+            right: auto;
+            bottom: auto;
+            width: 15.28571429rem;
+            height: 2.5rem;
+        }
+        #f0 .anchor a:nth-child(2) {
+            left: 65%;
+            top: 39%;
+            right: auto;
+            bottom: auto;
+            width: 5.57142857rem;
+            height: 3.35714286rem;
+        }
+        #f0 .anchor a:nth-child(3) {
+            left: 7.28571429rem;
+            top: 13.14285714rem;
+            right: auto;
+            bottom: auto;
+            width: 8.14285714rem;
+            height: 6.85714286rem;
+        }
+        #f0 .anchor a:nth-child(4) {
+            left: 15.42857143rem;
+            top: 13.14285714rem;
+            right: auto;
+            bottom: auto;
+            width: 2.85714286rem;
+            height: 6.85714286rem;
+        }
+        .floor:not(:nth-of-type(2)) {display: none;}
+        .desc:not(:nth-of-type(2)) {display: none;}
+        .img:not(:nth-of-type(2)) {display: none;}
+        .img img:not(:first-of-type) {display: none;}
+        #f1 .thumbnail:nth-child(1) {border: 3px solid #000;}
+        
+    </style>
+    
+</head>
+<body>
+    <div id="navigation"></div>
+    <div id="header"></div>
+
+    
+    <div id="main">
+        <div id="title">층별안내</div>
+        <div class="main_box">
+            <div id="floor"><p id="plus">2F</p><p id="minus">B1</p></div>
+            
+            <div id="f1" class="floor">
+            <div class="map">
+                <div class="anchor"><a></a><a></a><a></a></div>
+                <div class="desc">1F_OPEN STAIR<br>자유롭게 앉아 대화를 나누고 휴식을 취할 수 있는 청춘마루 외부의 오픈형 계단광장입니다.</div>
+                <div class="desc">1F_안내<br>청춘마루 이용 중 궁금하신 점이나 불편사항이 있으시면 안내데스크 직원으로부터 도움을 받으실 수 있습니다.</div>
+                <div class="desc">1F_ATM<br>청춘마루에 설치된 자동화기기를 통해 현금입출금 등 기본적인 은행거래가 가능합니다.</div>
+            </div>
+            <div class="img">
+                <img src="graphic/1F11.jpg">
+                <img src="graphic/1F12.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/1F21.jpg">
+                <img src="graphic/1F22.jpg">
+                <img src="graphic/1F23.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/1F31.jpg">
+                <img src="graphic/1F32.jpg">
+                <img src="graphic/1F33.jpg">
+                <img src="graphic/1F34.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            </div>
+            
+            <div id="f2" class="floor">
+            <div class="map">
+                <div class="anchor"><a></a><a></a><a></a></div>
+                <div class="desc">2F_갤러리<br>그림, 사진, 패션 등 다양한 분야의 작품을 전시하고 자유롭게 감상할 수 있는 공간입니다.</div>
+                <div class="desc">2F_아카데미<br>소규모의 참여형 교육 프로그램 참여를 통해 지식의 깊이를 넓히고 관심사를 나눌 수 있습니다.</div>
+                <div class="desc">2F_스페이스<br>청춘 맞춤형 강연이 제공되는 공간으로 취업, 음악, 패션 등 다양한 정보를 습득하고 체험할 수 있습니다.</div>
+            </div>
+            <div class="img">
+                <img src="graphic/2F11.jpg">
+                <img src="graphic/2F12.jpg">
+                <img src="graphic/2F13.jpg">
+                <img src="graphic/2F14.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/2F21.jpg">
+                <img src="graphic/2F22.jpg">
+                <img src="graphic/2F23.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/2F31.jpg">
+                <img src="graphic/2F32.jpg">
+                <img src="graphic/2F33.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            </div>
+            
+            <div id="f3" class="floor">
+            <div class="map">
+                <div class="anchor"><a></a><a></a></div>
+                <div class="desc">3F_청춘다리<br>청춘마루의 내부에서 가장 높은 곳에 위치한 연결통로로 외부의 루프탑과 연결됩니다.</div>
+                <div class="desc">3F / 루프탑<br>바쁜 일상 속에서 휴식을 취할 수 있는 도심 속 힐링 공간입니다.</div>
+            </div>
+            <div class="img">
+                <img src="graphic/3F11.jpg">
+                <img src="graphic/3F12.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/3F21.jpg">
+                <img src="graphic/3F22.jpg">
+                <img src="graphic/3F23.jpg">
+                <img src="graphic/3F24.jpg">
+                <img src="graphic/3F25.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            </div>
+            
+            <div id="f0" class="floor">
+            <div class="map">
+                <div class="anchor"><a></a><a></a><a></a><a></a></div>
+                <div class="desc">B1_세미나실1/2<br>Youth 고객의 팀플 및 모임을 위한 공간으로, 최소 4명 / 최대 8명까지 이용이 가능합니다.</div>
+                <div class="desc">B1_디지털라이브러리<br>디지털 기기를 통해 가상현실을 체험하고 미래 기술을 직접 경험할 수 있는 미래지향적인 공간입니다.</div>
+                <div class="desc">B1_스테이지<br>각종 공연과 콘서트가 진행되는 공간으로, 문화를 느끼고 청춘의 꿈을 펼칠 수 있는 무대입니다.</div>
+                <div class="desc">B1_청춘책방<br>노랑계단에 앉아 책을 보며 낭만을 즐길 수 있는 청춘들의 공간</div>
+            </div>
+            <div class="img">
+                <img src="graphic/B111.jpg">
+                <img src="graphic/B112.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/B121.jpg">
+                <img src="graphic/B122.jpg">
+                <img src="graphic/B123.jpg">
+                <img src="graphic/B124.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/B131.jpg">
+                <img src="graphic/B132.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            <div class="img">
+                <img src="graphic/b141.jpg">
+                <img src="graphic/b142.jpg">
+                <img src="graphic/b143.jpg">
+                <div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            </div>
+            
+        </div>
+        <div class="main_box"></div>
+    </div>
+    
+    <div id="footer"></div>
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $("#navigation").load("header.html");
+            $("#footer").load("footer.html");
+            $("#header").load("sub_header.html");
+            thumbnail();
+        });
+        
+        window.addEventListener('scroll', function() {
+        });
+        
+        function thumbnail() {
+            var img = $('.img img').get();
+            var thumbnail = $('.img .thumbnail').get();
+            for(i=0; i<$('.img img').length; i++) {
+                thumbnail[i].style.backgroundImage = 'url('+img[i].getAttribute('src')+')';
+            }
+        }
+        
+        function reset(index) {
+            $('.desc:not(:nth-of-type('+(index+1)+'))').css('display','none');
+            $('.img:not(:nth-of-type('+(index+1)+'))').css('display','none');
+            $('.desc:nth-of-type('+(index+1)+')').css('display','block');
+            $('.img:nth-of-type('+(index+1)+')').css('display','inline-block');
+            $('.thumbnail').css('border','0');
+            $('.thumbnail:nth-child('+1+')').css('border','3px solid #000');
+            $('.img img').css('display','none');
+            $('.img img:nth-of-type('+1+')').css('display','inline-block');
+        }
+        
+        $('.thumbnail').click(function thumbnail_click(){
+            var index = $(this).index()+1;
+            $('.thumbnail').css('border','0');
+            $('.thumbnail:nth-child('+index+')').css('border','3px solid #000');
+            $('.img img').css('display','none');
+            $('.img img:nth-of-type('+index+')').css('display','inline-block');
+        });
+        
+        $('.anchor a').click(function() {
+            var index = $(this).index()+1;
+            reset(index);
+            switch($(this).closest('.floor').attr('id')){
+                case 'f1':
+                    $('#f1 .map').css('background-image', 'url(graphic/floor_1f_'+index+'.png)');
+                    break;
+                case 'f2':
+                    $('#f2 .map').css('background-image', 'url(graphic/floor_2f_'+index+'.png)');
+                    break;
+                case 'f3':
+                    $('#f3 .map').css('background-image', 'url(graphic/floor_3f_'+index+'.png)');
+                    break;
+                case 'f0':
+                    $('#f0 .map').css('background-image', 'url(graphic/floor_b1_'+index+'.png)');
+                    break;
+            }
+        });
+        
+        var now_floor = 1;
+        function reset_floor() {
+            if(now_floor == 0) $('#minus').css('pointer-events','none');
+            else if(now_floor == 3) $('#plus').css('pointer-events','none');
+            else $('#floor p').css('pointer-events','all');
+            
+            reset(1);
+            
+            $('.floor').css('display','none');
+            $('.map').css('display','none');
+            switch(now_floor){
+                case 0:
+                    $('#f0').css('display','block');
+                    $('#plus').text('1F');
+                    $('#minus').text('　');
+                    $('#f0 .map').css('display','inline-block');
+                    break;
+                case 1:
+                    $('#f1').css('display','block');
+                    $('#plus').text('2F') ;
+                    $('#minus').text('B1');
+                    $('#f1 .map').css('display','inline-block');
+                    break;
+                case 2:
+                    $('#f2').css('display','block');
+                    $('#plus').text('3F');
+                    $('#minus').text('1F');
+                    $('#f2 .map').css('display','inline-block');
+                    break;
+                case 3:
+                    $('#f3').css('display','block');
+                    $('#plus').text('　');
+                    $('#minus').text('2F');
+                    $('#f3 .map').css('display','inline-block');
+                    break;
+            }
+        }
+        $('#plus').click(function() {
+            ++now_floor;
+            reset_floor();
+        });
+        $('#minus').click(function() {
+            --now_floor;
+            reset_floor();
+        });
+        
+    </script>
+</html>

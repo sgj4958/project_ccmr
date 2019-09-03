@@ -1,0 +1,802 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        .intro_back {
+            width: 55%;
+            height: 1px;
+            background-color: #ffd000; 
+            position: absolute; 
+            top: 41.5%;
+            z-index: 0;
+            transition: 3s;
+            transform: translateX(-100%);
+        }
+        .intro_back:nth-of-type(2) {left: 55%; width: 1px; height: 58.5%; transform: translateY(-100%);}
+        .intro_back:nth-of-type(3) {top: 47.5%; right: 0%; transform: translate(100%,0);}
+        .intro_back:nth-of-type(4) {right: 55%; width: 1px; height: 47.6%; top: 0; transform: translateY(120%);}
+        .intro_door {
+            position: absolute;
+            left: 44.5%;
+            top: 55%;
+            width: 200px;
+            height: 276px;
+            background-image: url(graphic/stair.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .main_box:hover .intro_back {transform: translate(0);}
+        #intro_left, #intro_right {
+            width: 960px; 
+            height: 744px;
+            background-image: url(graphic/intro-vis.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            transition: 2s;
+            transition-delay: .2s;
+            top: 10%;
+        }
+        #intro_left {
+            background-position: left;
+            left: -6px;
+        }
+        #intro_right {
+            background-position: right;
+            right: 0;
+        }
+        .main_box:hover #intro_left {
+            transform: perspective(900px) rotateY(-45deg);
+            left: -12.2%;
+        }
+        .main_box:hover #intro_right {
+            transform: perspective(900px) rotateY(45deg);
+            right: -12.2%;
+        }
+        .main_box_left {
+            width: 30%; 
+            height: 100%; 
+            float: left;
+            background-image: url(graphic/intro-vis.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .main_box_left:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 30%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .main_box_right {
+            width: 70%; 
+            height: 100%; 
+            float: left; 
+            background-color: rgba(255,208,0,.9);
+        }
+        .main_box_right:before {
+            content: '청춘마루';
+            position: absolute;
+            top: 25%;
+            left: 28%;
+            color: #ffd000;
+            font-size: 100px;
+            font-weight: 900;
+            text-align: center;
+            transform: rotate(90deg);
+            transform-origin: left;
+            animation: center_text 5s infinite;
+        }
+        @keyframes center_text {
+            10% {top: 24%; transform: rotate(88deg);}
+            20% {top: 26%; transform: rotate(92deg);}
+            30% {top: 25%; transform: rotate(90deg);}
+        }
+        .main_box_left ul {
+            position: absolute; 
+            top: 10%; 
+            left: 10%; 
+            z-index: 1;
+        }
+        .main_box_left li {
+            color: #fff; 
+            font-size: 50px; 
+            font-weight: 900;
+            line-height: 4;
+            cursor: pointer;
+            transition: .7s;
+            position: relative;
+        }
+        .main_box_left li:hover {
+            color: #ffd000;
+        }
+        .main_box_left li > div {
+            color: #fff; 
+            font-size: 14px; 
+            font-weight: 600;
+            line-height: 1;
+            transition: .7s; 
+            position: absolute; 
+            top: 65%;
+            left: -50%;
+            opacity: 0;
+            width: 200%;
+            text-align: center;
+        }
+        .main_box_left li:hover div {
+            opacity: 1;
+        }
+        .main_box_left li > div:before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 70px;
+            width: 24px;
+            height: 24px;
+            background-image: url(graphic/icon_learning_white.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .background {
+            width: 230px;
+            height: 230px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .main_box_right >div {
+            display: none;
+            width: 95%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .main_box_right >div >div {
+            width: 230px;
+            height: 350px; 
+            padding: 10px;
+            background-color: #fff;
+            float: left;
+            margin-left: 20px;
+            box-shadow: 0 76px 65px 0 hsla(0,0%,45%,.5);
+            /*animation: main_box_right 1s 0s 1;*/
+            position: relative;
+            margin-top: 0%;
+        }
+        @keyframes main_box_right {
+            0% {opacity: 0;/*transform: translateY(-30%);*/margin-top: 0%;}
+            100% {}
+        }
+        /*.main_box_right >div >div:hover {animation: main_box_right_hover 1s 0s 1;}*/
+        @keyframes main_box_right_hover {
+            0% {transform-origin: left bottom; transform: rotate(-3deg);}
+            50% {transform-origin: right bottom; transform: rotate(3deg);}
+            80% {transform-origin: left bottom; transform: rotate(-1deg);}
+            100% {}
+        }
+        .main_box_right >div >div:nth-of-type(1) {margin-top: 10%; z-index: 4;}
+        .main_box_right >div >div:nth-of-type(2) {margin-top: 20%; z-index: 3;}
+        .main_box_right >div >div:nth-of-type(3) {margin-top: 30%; z-index: 2;}
+        .main_box_right >div >div:nth-of-type(4) {margin-top: 40%; z-index: 1;}
+        .main_box_right >div >div:before {
+            position: absolute;
+            left: 20%;
+            top: -10%;
+            font-size: 2em;
+            color: #fff;
+            font-weight: 900;
+        }
+        #jeonsi >div:before {content: 'ㅈㅓㄴㅅㅣ';}
+        #baeum >div:before {content: 'ㅂㅐㅇㅜㅁ';}
+        #gangyeon >div:before {content: 'ㄱㅏㅇㅇㅕㄴ';}
+        #gongyeon >div:before {content: 'ㄱㅗㅇㅇㅕㄴ';}
+        svg polyline {
+            stroke-dasharray: 2000;
+            /*animation: svg_line 4s  ease-in-out 1;*/
+            transition: 1s;
+        }
+        @keyframes svg_line {
+            from {stroke-dashoffset: 2000;}
+            to {stroke-dashoffset: 0;}
+        }
+        svg path {
+            stroke-dasharray: 3380;
+            stroke-dashoffset: -3380;
+            animation: svg_logo 8s 0s ease-in-out infinite;
+        }
+        @keyframes svg_logo {
+            80% {stroke-dashoffset: 0;}
+            90% {stroke-dashoffset: 0;}
+            95% {stroke-dashoffset: -3380;}
+        }
+        
+        #calendar {margin: 0 10%; width: 80%; height: 80%; position: relative; border: 1px solid #fff; box-sizing: border-box; border-radius: 100px 100px 0 0;}
+        #calendar .calendar_line {width: 100%; background-color: ; height: 1px; position: absolute;}
+        #calendar .calendar_line:nth-of-type(1) {top: 16.6%;}       #calendar .calendar_line:nth-of-type(2) {top: 33.2%;}
+        #calendar .calendar_line:nth-of-type(3) {top: 49.8%;}
+        #calendar .calendar_line:nth-of-type(4) {top: 67.4%;}
+        #calendar .calendar_line:nth-of-type(5) {top: 82%;}
+        #calendar .calendar_line:nth-of-type(6) {top: 100%;}
+        #calendar .calendar_ring {
+            position: absolute;
+            top: -10px;
+            width: 20px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #fff;
+            z-index: 1;
+        }
+        #calendar .calendar_ring:nth-of-type(7) {left: 10%;}
+        #calendar .calendar_ring:nth-of-type(8) {left: 20%;}
+        #calendar .calendar_ring:nth-of-type(9) {left: 30%;}
+        #calendar .calendar_ring:nth-of-type(10) {left: 40%;}
+        #calendar .calendar_ring:nth-of-type(11) {left: 50%;}
+        #calendar .calendar_ring:nth-of-type(12) {left: 60%;}
+        #calendar .calendar_ring:nth-of-type(13) {left: 70%;}
+        #calendar .calendar_ring:nth-of-type(14) {left: 80%;}
+        #calendar .calendar_ring:nth-of-type(15) {left: 90%;}
+        #calendar ul li {text-align: center; background-color: #ffd000; color: #fff;}
+        #calendar ul li:first-child {border-radius: 100px 0 0 0;}
+        #calendar ul li:last-child {border-radius: 0 100px 0 0;}
+        #calendar li {
+            float: left; 
+            color: #ddd; 
+            width: 14.286%; 
+            font-size: 2em;
+            text-align: left;
+            padding-top: 6%;
+            border-bottom: 1px solid #777;
+            box-sizing: border-box;
+            position: relative;
+        }
+        #calendar ol li:nth-child(7n):after {clear: both;}
+        .schdule_0:after, .schdule_1:after, .schdule_2:after, .schdule_3:after, .schdule_4:after, .schdule_5:after, .schdule_0:before {
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: contain;
+            font-size: 0.5em;
+            position: absolute;
+            left: 15%;
+            bottom: 0;
+        }
+        .schdule_0:before {
+            bottom: 25px;
+            background-image: url(graphic/schdule_yellow.png);
+            content: 'Arti-Star 콜라보 展';
+        }
+        .schdule_0:after {
+            background-image: url(graphic/schdule_red.png);
+            content: '조주기능사 맛보기 클래스';
+        }
+        .schdule_1:after {
+            background-image: url(graphic/schdule_yellow.png);
+            content: 'Arti-Star 콜라보 展';
+        }
+        .schdule_2:after {
+            background-image: url(graphic/schdule_red.png);
+            content: '조주기능사 맛보기 클래스';
+        }
+        .schdule_3:after {
+            background-image: url(graphic/schdule_red.png);
+            content: '브이로그 클래스';
+        }
+        .schdule_4:after {
+            background-image: url(graphic/schdule_green.png);
+            content: '7월 북콘서트';
+        }
+        .schdule_5:after {
+            background-image: url(graphic/schdule_blue.png);
+            content: '청춘 옥상 영화제';
+        }
+        
+        #jeonsi {display: none;}
+        .main_box svg:nth-child(3) {visibility: hidden;}
+
+        #main_box_calendar h4 {margin-top: -20px;}
+        #program_legend {color: #fff; text-align: center;}
+        #program_legend li {
+            display: inline-block; 
+            font-size: 1.1em;
+            width: 3.5%;
+            text-align: left;
+            text-indent: 10px;
+            background-repeat: no-repeat;
+        }
+        #program_legend li:nth-child(1) {
+            background-image: url(graphic/schdule_yellow.png);}
+        #program_legend li:nth-child(2) {
+            background-image: url(graphic/schdule_red.png);}
+        #program_legend li:nth-child(3) {
+            background-image: url(graphic/schdule_green.png);}
+        #program_legend li:nth-child(4) {
+            background-image: url(graphic/schdule_blue.png);}
+        #program_legend li:nth-child(5) {
+            background-image: url(graphic/schdule_skyblue.png);}
+
+        #month {position: absolute; left: 13.3%; top: 5%;}
+        #month_before, #month_after {
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.8em;
+            position: absolute;
+            left: 10%;
+            top: 5%;
+        }
+        #month_after {left: 20%;}
+        #year {
+            color: #fff; 
+            font-size: 0.2em; 
+            position: absolute;
+            left: 12%;
+            top: 12%;
+        }
+        #location {margin: 0 0 1% 43.5%;}
+        #location h4 {text-align: left;}
+        #location h4:nth-of-type(1):before, 
+        #location h4:nth-of-type(2):before, 
+        #location h4:nth-of-type(3):before {
+            content: '　';
+            background-size: contain;
+            width: 20px; 
+            height: 20px;
+            margin-right: 5px;
+        }
+        #location h4:nth-of-type(1):before {
+            background-image: url(graphic/icon_location.png);
+        }
+        #location h4:nth-of-type(2):before {
+            background-image: url(graphic/icon_phone.png);
+        }
+        #location h4:nth-of-type(3):before {
+            background-image: url(graphic/icon_mail.png);
+        }
+        #cometoway {color: #fff; font-size: 1.2em; margin: 1% 0 0 10%;}
+        #cometoway dt {
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 120px; 
+            height: 20px;
+            text-indent: 23px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        #cometoway dd {
+            display: inline-block;
+            margin-right: 5%;
+        }
+        #cometoway dt:nth-of-type(1) {
+            background-image: url(graphic/icon_metro.png);}
+        #cometoway dt:nth-of-type(2) {
+            background-image: url(graphic/icon_bus.png);}
+        #cometoway .green {background: #329d00;}
+        #cometoway .lightgreen {background: #86c3a4;}
+        #cometoway .skyblue {background: #81bae5;}
+        #cometoway .blue {background: #286cb9;}
+        #cometoway span {border-radius: .9rem; padding: 1px 3px;}
+        
+        
+        #main_box_calendar #title {background-image: url(graphic/icon_monthly_white.png); color: #fff; margin-left: 39%;}
+        #main_box_location #title {background-image: url(graphic/icon_visit_white.png); margin-left: 43.5%; color: #fff;}
+    </style>
+    
+</head>
+<body>
+    <div id="navigation"></div>
+    
+    <div id="main">
+        <div class="main_box" style="overflow: hidden; cursor: pointer;">
+            <div class="intro_back"></div>
+            <div class="intro_back"></div>
+            <div class="intro_back"></div>
+            <div class="intro_back"></div>
+            <div class="intro_door"></div>
+            <div id="intro_left"></div>
+            <div id="intro_right"></div>
+            
+            <svg id="2a7d7d16-c00e-41fd-a9ec-635a7c455947" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1900 1010" style="position: absolute; z-index: 2; width: 1000; height: 500; left: 41%; top: 40%"><defs><style>.\31 237bfb0-fbb9-4f43-ae15-0eb8ac923458,.ae55a441-d595-43c7-a490-f5bfef343bc1{fill:none;stroke:#fff;stroke-miterlimit:10;}.a51913b6-263c-447c-acb2-9e95ef3fa03b{clip-path:url(#ccc9d27f-c336-4efb-98e3-88107e394fb3);}.\31 237bfb0-fbb9-4f43-ae15-0eb8ac923458{stroke-linecap:round;stroke-width:20px;}</style><clipPath id="ccc9d27f-c336-4efb-98e3-88107e394fb3" transform="translate(-697.98 -345.02)"><path class="ae55a441-d595-43c7-a490-f5bfef343bc1" d="M893.62,443.21c-4.26.05-9.81-1.92-12.43.91s-.39,8.29-.82,12.56c-.35,3.41,1,4.2,4.25,4.13,10.15-.21,20.32.08,30.48-.16,3.62-.09,5,.67,4.8,4.6-.35,7.48-.2,15-.06,22.49.08,4.27-1.89,9.83.79,12.48s8.25.41,12.51.86c3.27.35,4.22-.77,4.15-4.09-.22-10.66.1-21.32-.16-32-.09-3.65,1.14-4.45,4.51-4.35,7.32.23,14.66.07,22,.07,13.44,0,13.31,0,13.27-13.56,0-3.47-1.18-4.1-4.32-4.07-14.66.15-29.32.07-44,.06C916.94,443.16,905.27,443.07,893.62,443.21Zm306.89,70c-11.82,0-23.65-.05-35.48,0-13.16.08-13,.13-13,13.35,0,3.31.88,4.28,4.18,4.22,10.16-.2,20.33.1,30.49-.16,3.91-.11,5.56.62,5.32,5-.4,7.47-.2,15,0,22.48.08,4.11-1.85,9.52.75,12,2.8,2.67,8.25.47,12.51.89,3.17.32,4.29-.63,4.2-4.08-.26-10.65.08-21.32-.18-32-.09-3.67,1.16-4.41,4.52-4.34,10,.2,20-.06,30,.15,3.31.07,4.91-.52,4.52-4.25a46.21,46.21,0,0,1,0-9.48c.36-3.52-1.2-4-4.26-4-14.49.14-29,.06-43.48.06ZM928,540.59h37c11.78,0,11.6,0,11.9-11.67.1-4-.88-5.32-5.11-5.29-23.14.21-46.28,0-69.42.16-3.63,0-5-.73-4.83-4.63.32-7.81.11-15.64.11-23.47,0-12.66,0-12.54-12.67-12.6-3.36,0-4.55.72-4.51,4.35q.3,24.72,0,49.45c0,3.24.75,4.25,4.11,4.21,14.48-.19,29-.08,43.44-.08ZM1090,523.41c0,4.43-2,10.51.85,12.85s8.58.43,13,.81c3.77.32,4.32-1.35,4.27-4.61-.17-10.83,0-21.67-.12-32.5,0-2.81.76-3.78,3.65-3.73,8.16.17,16.32.08,24.49.06,7.93,0,7.93,0,8-7.69a37.66,37.66,0,0,1,.09-5c.48-3.43-.74-4.69-4.31-4.62-9.49.18-19-.06-28.49.07-2.63,0-3.45-.7-3.4-3.36.17-7.66.1-15.33,0-23,0-4.47,1.48-10.43-.79-13-2.64-3-8.76-.44-13.32-.93-3.37-.35-4.11,1-4.07,4.16.16,15,.07,30,.07,45C1090,499.74,1089.92,511.58,1090,523.41ZM861.38,402c0-3-.68-4.22-3.87-3.95a59.39,59.39,0,0,1-10,0c-3.26-.28-3.85,1.07-3.81,4,.17,10.65-.12,21.32.17,32,.11,3.88-1.14,4.72-4.79,4.63-10-.25-20,0-30-.14-2.48,0-3.64.5-3.45,3.27a70.63,70.63,0,0,1,0,10.49c-.27,3.23,1,3.84,4,3.79,9.83-.18,19.66.11,29.48-.16,3.64-.1,5,.66,4.78,4.58-.34,7.48-.19,15-.06,22.48.07,4.28-1.9,10,.74,12.47,2.85,2.68,8.55.42,13,.89,3.15.33,3.87-.85,3.84-3.89-.16-15.15-.07-30.31-.07-45.46C861.32,432,861.24,417,861.38,402Zm73.25-40.9c.4-2.33,1.1-5.19-1.82-5.89a5.2,5.2,0,0,0-6.56,3.84c-1.15,4-2.41,8-3.23,12-1.19,5.91-2,11.89-3.11,18.36-7.93-5.77-16.91-8.38-24.34-13.71-3.41-2.45-5.82-1.06-7.66,1.32-2.48,3.21,1.18,4.27,2.9,5.55,6.43,4.78,13.86,7.87,20.73,11.92,2.72,1.61,3.7,2.78.2,4.88-8.39,5.05-15.94,11.46-24.88,15.66-1.11.52-2.92,1.19-2.39,2.64s2.43,1.56,3.95,1.1a33.5,33.5,0,0,0,3.7-1.47c8-3.62,15.48-8.39,22.92-13.05,4.49-2.81,8.25-2.68,12.43,0q11.13,7.11,22.35,14.11c7.62,4.73,15.24,9.45,23.61,12.84,2.49,1,5,1.3,6.13-1,1.24-2.51-1.81-3-3.32-4.08-14.12-10-29.36-18.22-43.28-28.49-2.31-1.71-2.54-2.59.1-4.11,6.47-3.74,12.78-7.76,19.24-11.51,7.62-4.42,15.46-8.48,22.37-14a17.55,17.55,0,0,0,3.24-3.08c.9-1.21,1.47-2.94.74-4.25-.87-1.58-2.74-.89-4.11-.57-4,.93-7.06,3.49-10.39,5.7-10.48,6.95-21.16,13.58-32.35,20.72C931.76,377.38,933.24,369.26,934.63,361.13Zm-207.81,70.4c-3.54-2.4-6.69-2.87-8.89.59-2.5,3.94,2.06,5,4.16,6.33,6.32,4,12.93,7.48,19.46,11.12,2.84,1.58,3.6,2.81.17,4.87-8.39,5.06-15.93,11.46-24.87,15.66-1.1.52-2.92,1.17-2.37,2.64s2.44,1.57,3.94,1.08A25.46,25.46,0,0,0,723,472c7.81-4.39,15.68-8.7,23.32-13.39,3.54-2.18,6.38-2.44,10-.05,7.72,5.19,15.68,10,23.58,15s15.54,9.61,24.08,13c2.38.95,4.63.78,5.62-1.34s-1.6-2.81-3-3.8c-14.15-9.9-29.31-18.25-43.3-28.42-3-2.18-2.58-3.09.24-4.7,6.34-3.64,12.52-7.55,18.84-11.21,7.76-4.5,15.75-8.64,22.74-14.36a11.61,11.61,0,0,0,3-3.22,5.06,5.06,0,0,0,.46-3.81c-.62-1.37-2.39-.84-3.64-.59-4.2.84-7.39,3.52-10.87,5.82-10.47,6.94-21.15,13.56-32.36,20.7.1-9.36,1.5-17.67,3-26,.4-2.2.71-4.8-2-5.37-2.36-.5-5,.09-6.11,3-.47,1.24-1,2.47-1.38,3.74a136.92,136.92,0,0,0-5,27.8C742.51,439.13,734,436.42,726.82,431.53Zm467.9,4.43c4.28,0,9.87,1.87,12.48-.81s.39-8.25.85-12.51c.39-3.64-.7-4.77-4.56-4.74-23.32.2-46.64.08-70,.11-4.31,0-10-1.44-12.54.74-2.93,2.55-.53,8.45-1,12.86-.39,3.42.69,4.54,4.3,4.48,13.16-.23,26.32-.09,39.48-.09C1174.07,436,1184.4,436.08,1194.72,436Zm20,30c4.27,0,9.86,1.88,12.48-.81s.38-8.25.84-12.51c.4-3.65-.71-4.77-4.56-4.74-23.32.2-46.65.08-70,.11-4.3,0-10-1.43-12.53.74-2.92,2.55-.53,8.45-1,12.86-.39,3.43.7,4.54,4.3,4.48,13.16-.23,26.32-.09,39.48-.09C1194.07,466,1204.4,466.08,1214.73,466Zm20,30c4.28,0,9.87,1.87,12.48-.81s.39-8.25.85-12.51c.39-3.64-.7-4.77-4.56-4.74-23.32.2-46.64.08-70,.11-4.31,0-10-1.44-12.54.74-2.93,2.55-.53,8.45-1,12.86-.39,3.42.69,4.54,4.3,4.48,13.16-.23,26.32-.09,39.48-.09C1214.07,496,1224.4,496.08,1234.72,496Zm-152.55-8h-.05c0-15-.08-30,.07-45,0-3.15-.71-4.17-4.08-4.16q-41.73.13-83.46-.19c-3.37,0-4.11,1-4.09,4.17q.21,44.73.09,89.47c0,3.31.67,4.56,4.34,4.55q41.49-.16,83,.16c3.7,0,4.31-1.24,4.28-4.54C1082.08,517.59,1082.17,502.77,1082.17,487.94Zm-17.88,27.49c0,3-.58,4-3.79,3.94q-24-.25-48,0c-3.42.05-4.14-1-4.06-4.22.22-9.16.08-18.33.08-27.5h.06c0-9.16.13-18.33-.07-27.49-.07-3.13.52-4.31,4-4.26,15.83.21,31.66.16,47.49,0,3,0,4.31.46,4.28,4C1064.11,478.44,1064.15,496.94,1064.29,515.43Zm-251.57-7.11c-25.48,0-46.6,21.64-46.58,47.67s20.59,47.11,46.2,47.1c22.51,1.93,47.14-18.72,46.91-47.23C859,529.59,838.37,508.29,812.72,508.32Zm0,78.23c-16.52,0-29.74-13.56-29.76-30.5s13.08-30.61,29.55-30.78,30.28,13.89,30.21,30.82C842.71,572.84,829.19,586.57,812.77,586.55Z"/></clipPath></defs><g class="a51913b6-263c-447c-acb2-9e95ef3fa03b"><path class="1237bfb0-fbb9-4f43-ae15-0eb8ac923458" d="M1200.33,570V522l48.67-1h-98l94-34h-85l67-30h-87l67-32h-87l22,62.5h-41l-2,50.5V441l-97.67,6H1073v81H998V447l-24,86H889V484l38.5,14V453l49.5-2H881l41.66-56.54C923.33,366.93,932,357,932,357l-45,58s19-10,38-22,48-30,48-30v64s-33-19-48-29-33-20-33-20L820.09,516.46c12,2.1,31.67,10.56,30.91,36.54-1,34-27,40-27,40s-45,12-50-32,38-45,38-45l39-22V397l5,49H809l-56.22,3.08A87.61,87.61,0,0,1,760,413l-23-3-18,60s28-17,85-52l-19-26-64,41s9,3,31,18a567.7,567.7,0,0,0,54,33" transform="translate(-697.98 -345.02)"/></g><path class="ae55a441-d595-43c7-a490-f5bfef343bc1" d="M893.62,443.21c-4.26.05-9.81-1.92-12.43.91s-.39,8.29-.82,12.56c-.35,3.41,1,4.2,4.25,4.13,10.15-.21,20.32.08,30.48-.16,3.62-.09,5,.67,4.8,4.6-.35,7.48-.2,15-.06,22.49.08,4.27-1.89,9.83.79,12.48s8.25.41,12.51.86c3.27.35,4.22-.77,4.15-4.09-.22-10.66.1-21.32-.16-32-.09-3.65,1.14-4.45,4.51-4.35,7.32.23,14.66.07,22,.07,13.44,0,13.31,0,13.27-13.56,0-3.47-1.18-4.1-4.32-4.07-14.66.15-29.32.07-44,.06C916.94,443.16,905.27,443.07,893.62,443.21Zm306.89,70c-11.82,0-23.65-.05-35.48,0-13.16.08-13,.13-13,13.35,0,3.31.88,4.28,4.18,4.22,10.16-.2,20.33.1,30.49-.16,3.91-.11,5.56.62,5.32,5-.4,7.47-.2,15,0,22.48.08,4.11-1.85,9.52.75,12,2.8,2.67,8.25.47,12.51.89,3.17.32,4.29-.63,4.2-4.08-.26-10.65.08-21.32-.18-32-.09-3.67,1.16-4.41,4.52-4.34,10,.2,20-.06,30,.15,3.31.07,4.91-.52,4.52-4.25a46.21,46.21,0,0,1,0-9.48c.36-3.52-1.2-4-4.26-4-14.49.14-29,.06-43.48.06ZM928,540.59h37c11.78,0,11.6,0,11.9-11.67.1-4-.88-5.32-5.11-5.29-23.14.21-46.28,0-69.42.16-3.63,0-5-.73-4.83-4.63.32-7.81.11-15.64.11-23.47,0-12.66,0-12.54-12.67-12.6-3.36,0-4.55.72-4.51,4.35q.3,24.72,0,49.45c0,3.24.75,4.25,4.11,4.21,14.48-.19,29-.08,43.44-.08ZM1090,523.41c0,4.43-2,10.51.85,12.85s8.58.43,13,.81c3.77.32,4.32-1.35,4.27-4.61-.17-10.83,0-21.67-.12-32.5,0-2.81.76-3.78,3.65-3.73,8.16.17,16.32.08,24.49.06,7.93,0,7.93,0,8-7.69a37.66,37.66,0,0,1,.09-5c.48-3.43-.74-4.69-4.31-4.62-9.49.18-19-.06-28.49.07-2.63,0-3.45-.7-3.4-3.36.17-7.66.1-15.33,0-23,0-4.47,1.48-10.43-.79-13-2.64-3-8.76-.44-13.32-.93-3.37-.35-4.11,1-4.07,4.16.16,15,.07,30,.07,45C1090,499.74,1089.92,511.58,1090,523.41ZM861.38,402c0-3-.68-4.22-3.87-3.95a59.39,59.39,0,0,1-10,0c-3.26-.28-3.85,1.07-3.81,4,.17,10.65-.12,21.32.17,32,.11,3.88-1.14,4.72-4.79,4.63-10-.25-20,0-30-.14-2.48,0-3.64.5-3.45,3.27a70.63,70.63,0,0,1,0,10.49c-.27,3.23,1,3.84,4,3.79,9.83-.18,19.66.11,29.48-.16,3.64-.1,5,.66,4.78,4.58-.34,7.48-.19,15-.06,22.48.07,4.28-1.9,10,.74,12.47,2.85,2.68,8.55.42,13,.89,3.15.33,3.87-.85,3.84-3.89-.16-15.15-.07-30.31-.07-45.46C861.32,432,861.24,417,861.38,402Zm73.25-40.9c.4-2.33,1.1-5.19-1.82-5.89a5.2,5.2,0,0,0-6.56,3.84c-1.15,4-2.41,8-3.23,12-1.19,5.91-2,11.89-3.11,18.36-7.93-5.77-16.91-8.38-24.34-13.71-3.41-2.45-5.82-1.06-7.66,1.32-2.48,3.21,1.18,4.27,2.9,5.55,6.43,4.78,13.86,7.87,20.73,11.92,2.72,1.61,3.7,2.78.2,4.88-8.39,5.05-15.94,11.46-24.88,15.66-1.11.52-2.92,1.19-2.39,2.64s2.43,1.56,3.95,1.1a33.5,33.5,0,0,0,3.7-1.47c8-3.62,15.48-8.39,22.92-13.05,4.49-2.81,8.25-2.68,12.43,0q11.13,7.11,22.35,14.11c7.62,4.73,15.24,9.45,23.61,12.84,2.49,1,5,1.3,6.13-1,1.24-2.51-1.81-3-3.32-4.08-14.12-10-29.36-18.22-43.28-28.49-2.31-1.71-2.54-2.59.1-4.11,6.47-3.74,12.78-7.76,19.24-11.51,7.62-4.42,15.46-8.48,22.37-14a17.55,17.55,0,0,0,3.24-3.08c.9-1.21,1.47-2.94.74-4.25-.87-1.58-2.74-.89-4.11-.57-4,.93-7.06,3.49-10.39,5.7-10.48,6.95-21.16,13.58-32.35,20.72C931.76,377.38,933.24,369.26,934.63,361.13Zm-207.81,70.4c-3.54-2.4-6.69-2.87-8.89.59-2.5,3.94,2.06,5,4.16,6.33,6.32,4,12.93,7.48,19.46,11.12,2.84,1.58,3.6,2.81.17,4.87-8.39,5.06-15.93,11.46-24.87,15.66-1.1.52-2.92,1.17-2.37,2.64s2.44,1.57,3.94,1.08A25.46,25.46,0,0,0,723,472c7.81-4.39,15.68-8.7,23.32-13.39,3.54-2.18,6.38-2.44,10-.05,7.72,5.19,15.68,10,23.58,15s15.54,9.61,24.08,13c2.38.95,4.63.78,5.62-1.34s-1.6-2.81-3-3.8c-14.15-9.9-29.31-18.25-43.3-28.42-3-2.18-2.58-3.09.24-4.7,6.34-3.64,12.52-7.55,18.84-11.21,7.76-4.5,15.75-8.64,22.74-14.36a11.61,11.61,0,0,0,3-3.22,5.06,5.06,0,0,0,.46-3.81c-.62-1.37-2.39-.84-3.64-.59-4.2.84-7.39,3.52-10.87,5.82-10.47,6.94-21.15,13.56-32.36,20.7.1-9.36,1.5-17.67,3-26,.4-2.2.71-4.8-2-5.37-2.36-.5-5,.09-6.11,3-.47,1.24-1,2.47-1.38,3.74a136.92,136.92,0,0,0-5,27.8C742.51,439.13,734,436.42,726.82,431.53Zm467.9,4.43c4.28,0,9.87,1.87,12.48-.81s.39-8.25.85-12.51c.39-3.64-.7-4.77-4.56-4.74-23.32.2-46.64.08-70,.11-4.31,0-10-1.44-12.54.74-2.93,2.55-.53,8.45-1,12.86-.39,3.42.69,4.54,4.3,4.48,13.16-.23,26.32-.09,39.48-.09C1174.07,436,1184.4,436.08,1194.72,436Zm20,30c4.27,0,9.86,1.88,12.48-.81s.38-8.25.84-12.51c.4-3.65-.71-4.77-4.56-4.74-23.32.2-46.65.08-70,.11-4.3,0-10-1.43-12.53.74-2.92,2.55-.53,8.45-1,12.86-.39,3.43.7,4.54,4.3,4.48,13.16-.23,26.32-.09,39.48-.09C1194.07,466,1204.4,466.08,1214.73,466Zm20,30c4.28,0,9.87,1.87,12.48-.81s.39-8.25.85-12.51c.39-3.64-.7-4.77-4.56-4.74-23.32.2-46.64.08-70,.11-4.31,0-10-1.44-12.54.74-2.93,2.55-.53,8.45-1,12.86-.39,3.42.69,4.54,4.3,4.48,13.16-.23,26.32-.09,39.48-.09C1214.07,496,1224.4,496.08,1234.72,496Zm-152.55-8h-.05c0-15-.08-30,.07-45,0-3.15-.71-4.17-4.08-4.16q-41.73.13-83.46-.19c-3.37,0-4.11,1-4.09,4.17q.21,44.73.09,89.47c0,3.31.67,4.56,4.34,4.55q41.49-.16,83,.16c3.7,0,4.31-1.24,4.28-4.54C1082.08,517.59,1082.17,502.77,1082.17,487.94Zm-17.88,27.49c0,3-.58,4-3.79,3.94q-24-.25-48,0c-3.42.05-4.14-1-4.06-4.22.22-9.16.08-18.33.08-27.5h.06c0-9.16.13-18.33-.07-27.49-.07-3.13.52-4.31,4-4.26,15.83.21,31.66.16,47.49,0,3,0,4.31.46,4.28,4C1064.11,478.44,1064.15,496.94,1064.29,515.43Zm-251.57-7.11c-25.48,0-46.6,21.64-46.58,47.67s20.59,47.11,46.2,47.1c22.51,1.93,47.14-18.72,46.91-47.23C859,529.59,838.37,508.29,812.72,508.32Zm0,78.23c-16.52,0-29.74-13.56-29.76-30.5s13.08-30.61,29.55-30.78,30.28,13.89,30.21,30.82C842.71,572.84,829.19,586.57,812.77,586.55Z" transform="translate(-697.98 -345.02)"/></svg>
+           
+        </div>
+        <div class="main_box">
+            <div class="main_box_left">
+                <ul><a>
+                    <li>전시마루
+                        <div>예술적 감성을 채워줄 국내외 아티스트들의 작품 전시</div>
+                    </li></a>
+                    <a>
+                    <li>배움마루
+                        <div>배움의 열정을 더해줄 아카데미/교육 프로그램</div>
+                    </li></a>
+                    <a>
+                    <li>강연마루
+                        <div>청춘들의 꿈을 응원해줄 명사들의 강연 프로그램</div>
+                    </li></a>
+                    <a>
+                    <li>공연마루
+                        <div>청춘들의 스트레스를 비워줄 다양한 뮤지션들의 공연</div>
+                    </li></a>
+                </ul>
+            </div>
+            <div class="main_box_right">
+                <div id="jeonsi">
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/je_01.jpg)"></div>
+                        <h1>2019 청춘마루</h1>
+                        <h2>Arti-Star 콜라보 展</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/je_02.jpg)"></div>
+                        <h1>브릭사진가 이제형 작가 특별展</h1>
+                        <h2>스톰트루퍼's 라이프</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/logo.png)"></div>
+                        <h1>청춘마루</h1>
+                        <h2>준비중</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/logo.png)"></div>
+                        <h1>청춘마루</h1>
+                        <h2>준비중</h2>
+                        </a>
+                    </div>
+                </div>
+                <div id="baeum">
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/ba_01.jpg)"></div>
+                        <h1>8월 아카데미</h1>
+                        <h2>조주기능사 맛보기 클래스</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/ba_02.jpg)"></div>
+                        <h1>8월 아카데미</h1>
+                        <h2>브이로그 클래스</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/ba_03.jpg)"></div>
+                        <h1>MOS / PPT 족집게 강의</h1>
+                        <h2>7월 아카데미</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/ba_04.jpg)"></div>
+                        <h1>아티스트 장띵과 함께하는</h1>
+                        <h2>캐릭터 드로잉</h2>
+                        </a>
+                    </div>
+                </div>
+                <div id="gangyeon">
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/ga_01.jpg)"></div>
+                        <h1>공신 강성태와 함께하는</h1>
+                        <h2>수능 D-100일 특강</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/ga_02.jpg)"></div>
+                        <h1>한젬마의 아트 콜라보</h1>
+                        <h2>7월 북콘서트</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/logo.png)"></div>
+                        <h1>청춘마루</h1>
+                        <h2>준비중</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/logo.png)"></div>
+                        <h1>청춘마루</h1>
+                        <h2>준비중</h2>
+                        </a>
+                    </div>
+                </div>
+                <div id="gongyeon">
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/go_01.jpg)"></div>
+                        <h1>칠월칠일에는 청춘마루와 ㅊㅊ데이!</h1>
+                        <h2>ㅊㅊ데이 2부</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/go_02.jpg)"></div>
+                        <h1>칠월칠일에는 청춘마루와 ㅊㅊ데이!</h1>
+                        <h2>ㅊㅊ데이 1부</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/go_03.jpg)"></div>
+                        <h1>루프탑 X 맥주 X 영화 완벽한 조합</h1>
+                        <h2>청춘 옥상 영화제</h2>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="sub_program.html">
+                        <div class="background" style="background-image: url(graphic/go_04.jpg)"></div>
+                        <h1>감성충만 금요일 밤</h1>
+                        <h2>6월 청춘 콘서트</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 width="1900px" height="1010px" viewBox="0 0 1900 1010"
+	 xml:space="preserve" style="z-index: 0; position: absolute; right: 0;">
+<style type="text/css">
+	.st1{fill:none;stroke:#000000;stroke-width:30;stroke-linejoin:square;stroke-miterlimit:10;}
+</style>
+<defs>
+</defs>
+<polyline class="st1" points="1900,300 1600,300 1600,500 1300,500 1300,700 1000,700 1000,900 700,900 700,1010 "/>
+</svg>
+
+        </div>
+        <div class="main_box" id="main_box_calendar">
+            <div id="title">PROGRAM SCHEDULE</div>
+            <h4>지금, 청춘마루에서 만날 수 있는 프로그램을 확인해보세요!</h4>
+            <ul id="program_legend">
+                <li>전시</li>
+                <li>배움</li>
+                <li>강연</li>
+                <li>공연</li>
+                <li>이벤트</li></ul>
+            <h3><div id="month_before">&#10094;</div>
+                <div id="year">2019</div>
+                <div id="month">월</div>
+                <div id="month_after">&#10095;</div></h3>
+            <div id="calendar">
+                <div class="calendar_line"></div>
+                <div class="calendar_line"></div>
+                <div class="calendar_line"></div>
+                <div class="calendar_line"></div>
+                <div class="calendar_line"></div>
+                <div class="calendar_line"></div>
+                
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                <div class="calendar_ring"></div>
+                
+                <ul><li>일</li>
+                    <li>월</li>
+                    <li>화</li>
+                    <li>수</li>
+                    <li>목</li>
+                    <li>금</li>
+                    <li>토</li></ul>
+                <ol></ol>
+            </div>
+        </div>
+        
+        <div class="main_box" id="main_box_location">
+            <div id="title">오시는길</div>
+            <div id="location">
+                <h4>서울특별시 마포구 홍익로 18 (04055)</h4>
+                <h4>02-3144-7744</h4>
+                <h4>kbmaru@ethan-alice.com</h4>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.0374251656035!2d126.92079611565843!3d37.55418203259263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98c35f6dda95%3A0x2ca1204a21942567!2z7ISc7Jq47Yq567OE7IucIOuniO2PrOq1rCDshJzqtZDrj5kg7ZmN7J2166GcIDE4!5e0!3m2!1sko!2skr!4v1566280604197!5m2!1sko!2skr" width="80%" height="50%" frameborder="0" style="border: 0; margin: 0 10%;" allowfullscreen></iframe>
+            <dl id="cometoway">
+                <dt>지하철 이용</dt> 
+                <dd>
+                    <span class="green">2</span>
+                    지하철 2호선 홍대입구역 9번 출구 (도보 7분)
+                    <br>
+                    <span class="lightgreen">경</span>
+                    <span class="skyblue">공</span>
+                    홍대입구역 4번 출구 (도보 14분)
+                </dd> 
+                <dt>버스 이용</dt> 
+                <dd>
+                    <span class="green">마포09</span>
+                    <span class="blue">마포16</span>
+                    서교푸르지오아파트 하차 (도보 1분)
+                    <br>
+                    <span class="green">간선273</span>
+                    <span class="blue">지선7011</span>
+                    홍익대학교 하차 (도보 3분)
+                </dd>
+            </dl>
+        </div>
+        
+        <div id="footer"></div>
+    </div>
+    
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $("#navigation").load("header.html");
+            $("#footer").load("footer.html");
+            scroll100per();
+            calendar();
+        });
+        
+        function scroll100per(){
+            var elm = ".main_box";
+            $(elm).each(function (index) {
+                // 개별적으로 Wheel 이벤트 적용
+                $(this).on("mousewheel DOMMouseScroll", function (e) {
+                    e.preventDefault();
+                    var delta = 0;
+                    if (!event) event = window.event;
+                    if (event.wheelDelta) {
+                        delta = event.wheelDelta / 120;
+                        if (window.opera) delta = -delta;
+                    } 
+                    else if (event.detail)
+                        delta = -event.detail / 3;
+                    var moveTop = $(window).scrollTop();
+                    var elmSelecter = $(elm).eq(index);
+                    // 마우스휠을 위에서 아래로
+                    if (delta < 0) {
+                        if ($(elmSelecter).next() != undefined) {
+                            try{
+                                moveTop = $(elmSelecter).next().offset().top;
+                            }catch(e){}
+                        }
+                    // 마우스휠을 아래에서 위로
+                    } else {
+                        if ($(elmSelecter).prev() != undefined) {
+                            try{
+                                moveTop = $(elmSelecter).prev().offset().top;
+                            }catch(e){}
+                        }
+                    }
+                     
+                    // 화면 이동 0.8초(800)
+                    $("html,body").stop().animate({
+                        scrollTop: moveTop + 'px'
+                    }, {
+                        duration: 800, complete: function () {
+                        }
+                    });
+                });
+            });
+        }
+        
+        var side_menu = $('.main_box_left ul li');
+        function list_initial(list) {
+            $('.main_box_left a li').css({'color':''});
+            $('.main_box_left a:nth-child('+list+') li').css({'color':'#ffd000'});
+            document.getElementById('jeonsi').style.display='none';
+            document.getElementById('baeum').style.display='none';
+            document.getElementById('gangyeon').style.display='none';
+            document.getElementById('gongyeon').style.display='none';
+            $('.main_box_right >div >div').css({'animation':'main_box_right 1s 0s 1'});
+        }
+        side_menu[0].addEventListener('click', function() {
+            list_initial(1);
+            document.getElementById('jeonsi').style.display='block';
+        });
+        side_menu[1].addEventListener('click', function() {
+            list_initial(2);
+            document.getElementById('baeum').style.display='block';
+        });
+        side_menu[2].addEventListener('click', function() {
+            list_initial(3);
+            document.getElementById('gangyeon').style.display='block';
+        });
+        side_menu[3].addEventListener('click', function() {
+            list_initial(4);
+            document.getElementById('gongyeon').style.display='block';
+        });
+        
+        $('.main_box_right >div >div').css({'animation':'main_box_right 1s 0s 1'});
+        $('.main_box_right >div >div').mouseover(function() {
+            $(this).css({'animation':'main_box_right_hover 1s 0s 1'})
+        });
+        $('.main_box_right >div >div').mouseleave(function() {
+            $(this).css({'animation':''})
+        });
+        
+        window.addEventListener('scroll', function() {
+            var polyline = document.getElementsByTagName('polyline')[0];
+            if(pageYOffset >= 1010 && pageYOffset < 2020) {
+                polyline.style.visibility = 'visible';
+                polyline.style.animation = 'svg_line 3s  ease-in-out 1';
+                
+                list_initial(1);
+                document.getElementById('jeonsi').style.display='block';
+            } else {
+                polyline.style.visibility = 'hidden';
+                polyline.style.animation = '';
+            }
+        });
+        
+        var today = new Date();
+        var today_month = today.getMonth();
+        function calendar() {
+            var first_day = new Date(today.getFullYear(), today.getMonth(), 1).getDay();
+            var last_day = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
+            for(i=0; i<first_day; i++) $('#calendar ol').append('<li>　</li>');
+            for(j=1; j!=last_day+1; j++) {
+                switch(Math.round(Math.random()*10/2)) {
+                    case 0:
+                        $('#calendar ol').append('<li class="schdule_0">'+j+'</li>');
+                        break;
+                    case 1:
+                        $('#calendar ol').append('<li class="schdule_1">'+j+'</li>');
+                        break;
+                    case 2:
+                        $('#calendar ol').append('<li class="schdule_2">'+j+'</li>');
+                        break;
+                    case 3:
+                        $('#calendar ol').append('<li class="schdule_3">'+j+'</li>');
+                        break;
+                    case 4:
+                        $('#calendar ol').append('<li class="schdule_4">'+j+'</li>');
+                        break;
+                    case 5:
+                        $('#calendar ol').append('<li class="schdule_5">'+j+'</li>');
+                        break;
+                }
+            }
+            for(i=1; i<today.getDate()+first_day; i++) $('#calendar ol li:nth-of-type('+i+')').css({'color':'#777'});
+            $('#calendar ol li:nth-of-type('+i+')').css({'color':'#ffd000', 'border-bottom':'1px solid #ffd000'});
+            
+            document.getElementById('month').innerHTML = today.getMonth()+1+'월';
+            document.getElementById('year').innerHTML = today.getFullYear();
+        }
+        function month_before_after() {
+            $('#calendar ol li').remove();
+            if(today_month == today.getMonth()) calendar();
+            else {
+                var first_day = new Date(today.getFullYear(), today.getMonth(), 1).getDay();
+                var last_day = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate();
+                for(i=0; i<first_day; i++) $('#calendar ol').append('<li>　</li>');
+                for(j=1; j!=last_day+1; j++) $('#calendar ol').append('<li>'+j+'</li>');
+                document.getElementById('month').innerHTML = today.getMonth()+1+'월';
+                document.getElementById('year').innerHTML = today.getFullYear();
+            }
+        }
+        $('#month_before').click(function() {
+            today = new Date(today.getFullYear(), today.getMonth()-1, today.getDate());
+            month_before_after();
+        });
+        $('#month_after').click(function() {
+            today = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+            month_before_after();
+        });
+        $('.main_box:nth-child(1)').click(function() {
+            $("html,body").stop().animate({scrollTop: '1010px'}, 
+                                          {duration: 800, complete: function() {}});
+        });
+    </script>
+</html>

@@ -1,0 +1,57 @@
+
+    <style>
+        #sub_navigation {
+            position: absolute; 
+            right: 10%; 
+            width: 75%; 
+            height: 100px;
+            z-index: 5; 
+            transition: top .5s;
+            top: 200px;
+            background-color: transparent;
+            color: #000;
+        }
+        #sub_navigation li {
+            display: inline-block; 
+            font-size: 1.4em; 
+            width: 15%; 
+            line-height: 50px;
+            text-align: center;
+            transition: .5s;
+        }
+        #sub_navigation li:hover {color: #ffd000;}
+    </style>
+    
+    <div id="sub_navigation">
+        <ul>
+            <a href="sub_brand.html"><li>청춘마루 소개</li></a>
+            <a href="sub_brand_contents.html"><li>청춘마루 콘텐츠</li></a>
+            <a href="sub_brand_membership.html"><li>청춘마루 멤버십</li></a>
+            <a href="sub_brand_floor.html"><li>층별안내</li></a>
+            <a href="main.html#main_box_location"><li>오시는길</li></a>
+        </ul>
+    </div>
+    <div id="sub_header"></div>
+    
+    <script>
+        $(window).scroll(sub_navigation_change);
+        
+        function sub_navigation_change() {
+            if(pageYOffset <= 10) 
+            $('#sub_navigation').css({
+                position:'absolute', 
+                top:'200px', 
+                'background-color':'transparent',
+                height:'100px',
+                color:'#000'
+            });
+            else
+            $('#sub_navigation').css({
+                position:'fixed', 
+                top:0,
+                'background-color':'#000',
+                height:'50px',
+                color:'#fff'
+            });}
+        
+    </script>

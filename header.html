@@ -1,0 +1,93 @@
+<div id="navigation">
+        <a href="main.html"><div id="logo"></div></a>
+        <div id="side_menu">
+            <div></div>
+            <ul>
+                <li><a href="sub_brand.html">청춘마루</a></li>
+                <li><a href="sub_program.html">프로그램안내</a></li>
+                <li><a href="sub_apply.html">공간이용신청</a></li>
+                <li><a href="sub_board.html">게시판</a></li>
+                <li><a href="sub_reservation.html">내예약현황</a></li>
+            </ul>
+        </div>
+    </div>
+    <style>
+        #navigation {
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+            z-index: 5; 
+            width: 100%;
+        }
+        #logo {
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            width: 203px;
+            height: 100px;
+            background-image: url(graphic/logo_white.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        #side_menu {
+            position: absolute;
+            right: 50px;
+            top: 50px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            background-color: rgba(255,255,255,0.3);
+        }
+        #side_menu >div {
+            width: 80px;
+            height: 80px;
+            background-image: url(graphic/icon_sidemenu_logo.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: .4s;
+        }
+        #side_menu:hover >div {transform: rotate(90deg);}
+        #side_menu:hover li {transform: translateY(0); opacity: 1;}
+        #side_menu:hover ul {visibility: visible;}
+        #side_menu ul {padding-top: 100px; visibility: hidden;}
+        #side_menu li {
+            width: 80px;
+            height: 80px;
+            margin-top: 20px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0; 
+            transition: .4s;
+            transform: translateY(-50px); 
+        }
+        #side_menu li a {position: absolute; width: 200%; height: 100%; color: #fff; left: -100%; font-size: 1.2em; transition: .5s;}
+        #side_menu li a:hover {color: #ffd000;}
+        #side_menu li:nth-child(1) {background-image: url(graphic/icon_sidemenu_1.png);}
+        #side_menu li:nth-child(2) {background-image: url(graphic/icon_sidemenu_2.png);}
+        #side_menu li:nth-child(3) {background-image: url(graphic/icon_sidemenu_3.png);}
+        #side_menu li:nth-child(4) {background-image: url(graphic/icon_sidemenu_4.png);}
+        #side_menu li:nth-child(5) {background-image: url(graphic/icon_sidemenu_5.png);}
+        #side_menu:hover li:nth-child(1) {transition-delay: .2s;}
+        #side_menu:hover li:nth-child(2) {transition-delay: .3s;}
+        #side_menu:hover li:nth-child(3) {transition-delay: .4s;}
+        #side_menu:hover li:nth-child(4) {transition-delay: .5s;}
+        #side_menu:hover li:nth-child(5) {transition-delay: .6s;}
+    </style>
+
+<script>
+    navigation_change();
+    $(window).scroll(navigation_change);
+    function navigation_change() {
+        if($(this.$('.main_box')).css('background-color')=='rgb(0, 0, 0)') {
+            $('#logo').css('background-image','url(graphic/logo_white.png)');
+            for(i=1; i<=$('#side_menu li').length; i++) 
+                $('#side_menu li:nth-child('+i+')').css('background-image','url(graphic/icon_sidemenu_'+i+'.png)');
+        }
+        else {
+            $('#logo').css('background-image','url(graphic/logo.png)');
+            for(i=1; i<=$('#side_menu li').length; i++) 
+                $('#side_menu li:nth-child('+i+')').css('background-image','url(graphic/icon_sidemenu_'+i+'_black.png)');
+        }
+    }
+</script>

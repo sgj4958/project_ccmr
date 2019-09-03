@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        #main {background-color: #fff;}
+        .main_box {background-color: transparent;}
+        #sub_navigation a:nth-of-type(1) li {color: #ffd000;}
+        
+        .main_box:nth-of-type(2) {
+            background-image: url(graphic/sub_brand_img_1.png);
+            background-size: cover;
+        }
+        .brand_intro {
+            font-size: 2em;
+            letter-spacing: -5px;
+            margin-left: 1000px;
+            margin-top: 200px;
+        }
+        .brand_intro:after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-image: url(graphic/favicon.png);
+            background-size: cover;
+            position: absolute;
+            margin-top: 10px;
+            margin-left: 10px;
+            animation: brand_intro 1s infinite;
+        }
+        @keyframes brand_intro {
+            0% {margin-left: 0px;}
+        }
+        .brand_intro div {
+            font-size: .7em;
+            letter-spacing: -2px;
+            position: absolute;
+            transition-duration: 1s;
+            width: 0px;
+            height: 170px;
+            overflow: hidden;
+            border-top: 1px solid #fff;
+        }
+        .brand_intro div::first-letter {color: #fff; background-color: #ffd000;}
+        .brand_intro:hover div {width: 750px;}
+        
+        /*.history {
+            width: 1200px;
+            padding: 50px;
+            height: auto;
+            margin: 0 350px;
+        }*/
+        .history {
+            width: 1200px;
+            padding: 50px 400px 0;
+            height: auto;
+        }
+        .history >div:last-of-type {border-top: 1px solid #ffd000;}
+        .history >div:nth-of-type(even) {margin-left: 45.5%;}
+        .history img {box-shadow: 0 76px 65px 0 hsla(0,0%,45%,.5);}
+        
+        #brand_logobox {width: 100%; height: 285px; margin-top: 10%; text-align: center; transition: 1s;}
+    </style>
+    
+</head>
+<body>
+    <div id="navigation"></div>
+    <div id="header"></div>
+    
+    <div id="main">
+        <svg version="1.1"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+             width="1900px" height="6028px"
+             xml:space="preserve">
+            <style type="text/css"></style>
+            <line x1="900" y1="0" x2="900" y2="6028"/>
+            <line x1="900" y1="2210" x2="850" y2="2210"/>
+            <line x1="900" y1="2860" x2="950" y2="2860"/>
+            <line x1="900" y1="5260" x2="850" y2="5260"/>
+            <line x1="900" y1="5760" x2="950" y2="5760"/>
+        </svg>
+        <style>
+            line {
+                fill:none;
+                stroke:#ffd000;
+                stroke-width:30;
+                stroke-linejoin:square;
+                stroke-miterlimit:10;
+                stroke-dasharray: 6028;
+                stroke-dashoffset: 6028;
+                transition: .7s;
+            }
+            line:not(:first-of-type) {
+                stroke-dasharray: 50;
+                stroke-dashoffset: 50;}
+            svg {z-index: 0; position: absolute;}
+        </style>
+        
+        <div class="main_box">
+            <div id="brand_logobox">
+                <img src="graphic/logo_white.png">
+            </div>
+            <div style="margin-left: 20%; padding: 50px 0; width: 60%; font-size: 24px;">KB청춘마루만의 열린문화공간 ‘청춘마루’는 젊은이를 상징하는 <span style="color: #ffd000">청춘</span>과 넓고 트인 공간(floor)을 표현하는 <span style="color: #ffd000">마루</span>를 조합한 브랜드로, <br>
+청춘의 열정을 응원하는 다양한 서비스와 이벤트를 제공하여 <br>젊은이들이 <br>더 크게, <br>더 멀리 <br>꿈을 펼칠 수 있는 공간을 지향합니다. <br><span style="font-size: 5em; font-weight: 900; font-family: fantasy">THE MARU TO CREATE.</span></div>
+        </div>
+        
+        <div class="main_box">
+            <div class="brand_intro">청춘의 일상을 새롭게 설계하는 공간
+                <div>
+청춘마루가 위치한 홍대는 젊은 문화의 중심지로 다양한 문화와 감성이 교차하고 
+수많은 젊은 발걸음이 향하는 곳입니다. <br>청춘마루는 재미있게 놀고 즐기는 공간에서 
+청춘들과 소통을 확대하고, <br>청춘들이 꿈을 키우고 이룰 수 있도록 지원하는 공간입니다. <br>KB국민은행은 전시, 아카데미, 강연, 공연, 영화제, 파티, 버스킹 등 다채로운 문화 콘텐츠 
+제공으로 청춘의 일상을 새롭게 설계하는 청춘마루로 운영할 것입니다.</div>
+            </div>
+            <div class="brand_intro">청춘의 기억과 경험을 담는 공간
+                <div>
+청춘마루는 지난 40여 년간 은행 지점으로 이용되던 서교동 지점 공간을 리모델링하여 문화공간으로 
+탄생하였습니다. 홍대 지역을 누구보다 잘 아는 홍익대 건축대학 교수진들의 설계를 통해 오래된
+건물을 허물기보다는 도시의 역사와 기억을 보존하는 디자인이 제안되었습니다.
+
+<br>기존 기둥에 계단형 공간을 만들었으며 전층을 가로지르는 노랑 계단에서 때로는 공연 관람을
+위한 객석, 때로는 휴식을 위한 공간 등 가변적인 활용을 제안합니다.</div>
+            </div>
+            <div class="brand_intro">청춘들을 위한 열린 문화공간
+                <div>
+청춘마루는 차별화된 공간과 콘텐츠 구성을 통해 청춘들이 미래를 <br>꿈꾸고, <br>만들고, <br>즐기는 공간이 될 것입니다.
+<br>특히, 은행 공간이 도시를 향해 열리면서 무심코 지나가던 길목은 건물 안으로 청춘들을 끌어들이는 문화의 길이 되어
+이곳에서 청춘이 시작되어 즐거운 기억과 경험을 축적해가는 공간을 선사할 것입니다.</div>
+            </div>
+        </div>
+        
+        <div class="main_box history">
+            <div>
+                <img src="graphic/sub_brand_img_2.jpg">
+                <h5>2019</h5>
+                <h5>.05</h5>
+                <h6>2019 청춘 Arti-Star 선정</h6>
+                <h6>청춘 옥상 영화제 제5회</h6>
+                <h5>.03~.04</h5>
+                <h6>냥덕 갬성 M.CHAT 라이브 페인팅 퍼포먼스</h6>
+                <h6>청춘마루 1주년 기념 생일파티(헤이즈, 오왠)</h6>
+                <h6>청춘 옥상 영화제 제4회</h6>
+                <h5>.01</h5>
+                <h6>청춘마루에서 맞이하는 2019년 새해 카운트다운</h6>
+            </div>
+            <div>
+                <img src="graphic/sub_brand_img_3.jpg">
+                <img src="graphic/sub_brand_img_4.jpg">
+                <img src="graphic/sub_brand_img_5.jpg">
+                <img src="graphic/sub_brand_img_6.jpg">
+                <img src="graphic/sub_brand_img_7.jpg">
+                <h5>2018</h5>
+                <h5>.10~.12</h5>
+                <h6>김현수 작가의 NEON LANGUAGE</h6>
+                <h6>청춘 감성 ON 콘서트 (샘김, 권진아)</h6>
+                <h6>청춘 드림 콘서트 (폴킴, 위키미키 도연)</h6>
+                <h6>수능탈출 콘서트(MXM, 위키미키 유정)</h6>
+                <h6>홍익대 건축대학 스튜디오 전시</h6>
+                <h5>.09</h5>
+                <h6>2018 대한민국 공간문화대상 문화체육관광부 장관상 수상</h6>
+                <h6>영어 팟캐스트 1위! 영어 능력자 김영철의 청춘 영어 북 토크쇼</h6>
+                <h5>.08</h5>
+                <h6>KB청춘마루 개관100일</h6>
+                <h6>개관 100일기념 청춘마루 건축 스토리북 발간</h6>
+                <h6>그래피티 커스텀 아트 전시회 (오리지널펑크)</h6>
+                <h6>청춘 힙합 콘서트 (우원재, 우디고차일드) </h6>
+                <h6>구독자 111만 유튜버 특별 강연(회사원A)</h6>
+                <h6>청춘 옥상 영화제 제3회</h6>
+                <h6>www.archdaily.com 청춘마루 소개</h6>
+                <h5>.07</h5>
+                <h6>Y.Zin의 청춘, 상상 속 바다를 여행하다<br>( 한국여성최초 여성 수중사진 작가 사진전 )</h6>
+                <h6>칠월칠일 청춘데이, ㅊㅊ파티</h6>
+                <h6>청춘 감성 여행 콘서트 (볼빨간사춘기)</h6>
+                <h6>청춘 옥상 영화제 제2회</h6>
+                <h5>.06</h5>
+                <h6>커스텀 전시</h6>
+                <h6>청춘 옥상 영화제 제1회</h6>
+                <h6>대표 건축지 SPACE 6월호 청춘마루 소개</h6>
+                <h5>.04~.05</h5>
+                <h6>방문객 1만명 달성</h6>
+                <h6>하상욱 시부림 전시</h6>
+                <h6>Youth 고객을 위한 꿈꾸고 만들고 즐기는 열린문화공간, 청춘마루 오픈</h6>
+                <h6>개관 기념 오프닝 행사</h6>
+                <h6>( 청춘마루 모델 위키미키 유정&amp;도연 10센치, 바이바이배드맨, 소수빈, 치즈 )</h6>
+            </div>
+            <div>
+                <img src="graphic/sub_brand_img_8.jpg">
+                <h5>2017</h5>
+                <h5>.06.26</h5>
+                <h6>시설공사 착공</h6>
+                <h5>.03.24</h5>
+                <h6>청춘마루 설계 허가완료</h6>
+            </div>
+            <div>
+                <img src="graphic/sub_brand_img_9.jpg">
+                <h5>2016</h5>
+                <h5>.11.09</h5>
+                <h6>홍익대학교 건축대학과 락스타 복합문화공간 디자인사업 MOU 체결</h6>
+            </div>
+            <div>
+                <h5>1976</h5>
+                <h6>.11.11</h6>
+                <h6>준공. KB국민은행 서교동지점으로 운영 
+본 건물은 한국 근대건축에서 큰 획을 그은 건축가 김수근이 이끌고 있었던 공간 건축 사무소에 의해 설계되었으며 1976년에 완공되었다.
+
+이 시기에 공간 건축 사무소는 국민은행 건물을 여러 곳에 설계하였다.
+그에 의해 디자인된 국민은행의 전체적인 건축적 형태는 열주라는 고전적인 모티브를 따랐으며, 건물은 철근 콘크리트 구조로 설계되었다.
+
+이는 그 당시에는 드물었던 기업의 브랜드 개념을 건물 디자인에 상직적으로 표현하고 국민은행의 브랜드 이미지를 구축하려고 했던 대표적 사례로 볼 수 있다.</h6>
+            </div>
+        </div>
+        
+        <div class="main_box"></div>
+    </div>
+    
+    <div id="footer"></div>
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $("#navigation").load("header.html");
+            $("#footer").load("footer.html");
+            $("#header").load("sub_header.html");
+            brand_logobox_change_a();
+        });
+        
+        window.addEventListener('scroll', function() {
+            var offset = 600;
+            if(pageYOffset == 0) $('line:nth-of-type(1)').css({'stroke-dashoffset':6028});
+            else $('line:nth-of-type(1)').css({'stroke-dashoffset':6028-pageYOffset-offset});
+            
+            $('line:not(:first-of-type)').css({'stroke-dashoffset':50});
+            if(3210>pageYOffset&&pageYOffset>2210-offset) $('line:nth-of-type(2)').css({'stroke-dashoffset':0});
+            if(3860>pageYOffset&&pageYOffset>2860-offset) $('line:nth-of-type(3)').css({'stroke-dashoffset':0});
+            if(6260>pageYOffset&&pageYOffset>5260-offset) $('line:nth-of-type(4)').css({'stroke-dashoffset':0});
+            if(6760>pageYOffset&&pageYOffset>5760-offset) $('line:nth-of-type(5)').css({'stroke-dashoffset':0});
+        });
+        
+        function brand_logobox_change_a() {
+            $('#brand_logobox').css({'background-color':'rgba(0,0,0,0)'});
+            $('#brand_logobox').children().attr('src',"graphic/logo.png");
+            setTimeout(brand_logobox_change_b, 2000);}
+        function brand_logobox_change_b() {
+            $('#brand_logobox').css({'background-color':'rgba(0,0,0,1)'});
+            $('#brand_logobox').children().attr('src',"graphic/logo_white.png");
+            setTimeout(brand_logobox_change_a, 2000);}
+        
+    </script>
+</html>

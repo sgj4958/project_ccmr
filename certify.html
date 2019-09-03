@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        * {text-align: center;}
+        #sub_header {color: #fff; width: 900px; line-height: 24rem; overflow: hidden;}
+        
+        p, #certify_input {}
+        p:nth-of-type(1) {
+            font-size: 2em; 
+            font-weight: 600; 
+            word-spacing: -5px;
+            margin-top: 10px;
+        }
+        p:nth-of-type(2) {color: #aaa; border-bottom: 1px solid #ffd000;}
+        #certify_input {
+            font-size: 1.4em; 
+            padding: 5px 10px; 
+            border: 0; 
+            border-bottom: 1px solid #000; 
+            outline: 0;
+            margin-top: 50px; 
+        }
+        #certify_input:hover {}
+        #certify_btn {
+            display: inline-block; 
+            color: #fff; 
+            background-color: #000; 
+            width: 100px; 
+            height: 35px; 
+            line-height: 35px;
+            cursor: pointer;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <div id="sub_header">NEWPREMIUMSPECIALSAFEVERYGOODULTRACERTIFYSYSTEMNEWPREMIUMSPECIALSAFEVERYGOODULTRACERTIFYSYSTEMNEWPREMIUMSPECIALSAFEVERYGOODULTRACERTIFYSYSTEMNEWPREMIUMSPECIALSAFEVERYGOODULTRACERTIFYSYSTEMNEWPREMIUMSPECIALSAFEVERYGOODULTRACERTIFYSYSTEMNEWPREMIUMSPECIALSAFEVERYGOODULTRACERTIFYSYSTEM</div>
+    
+    <p>이름을 적어주세요.</p>
+    <p>방금 입력하셨던 이름은 "<span></span>"입니다.</p>
+    <input type="text" id="certify_input"><div id="certify_btn">본인인증</div>
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $('p span').text(name);
+        });
+        
+        var name = location.href.split("?")[1];
+        name = decodeURI(name, "utf-8");
+        
+        $('#certify_btn').click(function() {
+            if($('#certify_input').val() == name) {
+                alert('안녕하세요, '+name+'님');
+                opener.document.getElementById('from_childwindow').innerHTML = 1;
+                window.close();
+            } else {
+                alert('이름을 다시 확인해주세요.');
+            }
+        });
+        
+    </script>
+</html>

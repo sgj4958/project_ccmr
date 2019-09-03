@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        #main {background-color: #fff;}
+        .main_box {background-color: transparent;}
+        #title {background-image: url(graphic/icon_sidemenu_5_black.png);}
+        
+        #main .main_box p {margin: 10px 0; text-align: center;}
+        #main .main_box p:nth-child(1) {font-size: 2em; font-weight: 600; word-spacing: -5px; border-bottom: 1px solid #ffd000;}
+        #main .main_box p:nth-child(2) {font-size: 1.1em; text-align: left; padding-left: 38%;}
+        #main .main_box p:nth-child(3) {font-size: .9em; color: #777;}
+        #main .main_box >div {
+            color: #fff; 
+            width: 250px; 
+            height: 100px; 
+            background-color: #000; 
+            font-size: 1.6em; 
+            text-align: center; 
+            line-height: 4em; 
+            cursor: pointer;
+            transition: .4s;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 20px auto;
+        }
+        #main .main_box >div:hover {color: #000; background-color: #ffd000;}
+        
+        #mylist {text-align: center; font-size: 1.4em; padding: 5% 0; min-height: 1010px; display: none;}
+        #mylist p {border-bottom: 1px solid #ffd000; font-weight: 600;}
+        #mylist li::first-letter {color: #ffd000;}
+        #mylist ul {margin-top: 20px;}
+        #mylist li {margin-bottom: 20px;}
+        #mylist li span {text-align: center; padding: 5px; font-size: 1rem; cursor: pointer; margin: 0 5px; box-sizing: border-box; transition: .4s;}
+        #mylist li span:hover {color: #ffd000;}
+        #mylist .cancel {background-color: #000; color: #fff;}
+        #mylist .more {margin-left: 50px; border: 1px solid #ffd000;}
+        #mylist li div {font-size: .9em; color: #555; border: 1px solid #ddd; display: none;}
+        
+    </style>
+    
+</head>
+<body>
+    <div style="display: none;" id="from_childwindow"></div>
+    <div id="navigation"></div>
+    <div id="sub_header"></div>
+    
+    <div id="main">
+            <div id="title">내 예약현황</div>
+        <div class="main_box">
+            <p>예약/신청 확인 및 취소</p>
+            <p>원활한 프로그램 및 세미나실 이용을 위해 예약현황 확인 시 본인인증을 실시합니다.<br>프로그램 신청 및 세미나실 예약 시 입력하신 정보를 입력해주세요.</p>
+            <p>* 최근 3개월 동안의 예약/신청 확인 및 취소가 가능합니다.</p>
+            <div>본인인증</div>
+        </div>
+        
+        <div id="mylist">
+            <p><span>-</span>님, 총 <span>3</span>개가 검색되었습니다.</p>
+            <ul>
+                <li>내가 예약한 프로그램 1<span class="more">More</span><span class="cancel">Cancel</span><div>신청일 : yy.mm.dd<br>시간 : hh<br>대여목적 : First</div></li>
+                <li>내가 예약한 프로그램 2<span class="more">More</span><span class="cancel">Cancel</span><div>신청일 : yy.mm.dd<br>시간 : hh<br>대여목적 : Second</div></li>
+                <li>내가 예약한 프로그램 3<span class="more">More</span><span class="cancel">Cancel</span><div>신청일 : yy.mm.dd<br>시간 : hh<br>대여목적 : Third</div></li>
+            </ul>
+        </div>
+        
+        <div class="main_box" style="display: none;"></div>
+    </div>
+    
+    <div id="footer"></div>
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $("#navigation").load("header.html");
+            $("#footer").load("footer.html");
+        });
+        
+        window.addEventListener('scroll', function() {
+        });
+        
+        var name = location.href.split("?")[1];
+        name = decodeURI(name, "utf-8");
+        if(name == 'undefined') {
+            alert('이름이 없어요!\n공간이용신청 페이지에서 이름을 입력하시면 반영됩니다.');
+            name = '손님';
+        }
+        $('#main .main_box >div').click(function(){
+            var certify_window = window.open("certify.html?"+name, "certify", "width=900, height=560");
+            
+            $(certify_window).ready(function() {
+            })
+        });
+        
+        $(function() {
+            $('#from_childwindow').on('DOMSubtreeModified propertychange', function() {
+                if($('#from_childwindow').text() == 1) {
+                    $('#mylist p span:nth-child(1)').text(name);
+                    $('#main .main_box').css('display','none');
+                    $('#mylist').css('display','block');
+                }
+                else alert('본인인증 실패!');
+            })
+        });
+        
+        $('.cancel').click(function() {
+            if( confirm('정말 취소하시겠습니까?') == true ) {
+                $(this).parent('li').remove();
+                $('#mylist p span:nth-child(2)').text( $('#mylist li').length );
+            }
+        });
+        
+        $('#mylist .more').click(function() {
+            var div = $(this).siblings('div');
+            if( $(div).css('display') == 'none' ) $(div).css('display','block');
+            else $(div).css('display','none');
+        });
+        
+    </script>
+</html>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        #main {background-color: #fff;}
+        .main_box {background-color: transparent;}
+        #title {background-image: url(graphic/icon_learning.png);}
+        .card_box {
+            width: 1914px; 
+            height: 1010px; 
+            position: relative;
+            float: left;
+        }
+        #card_box_sum {width: 400%; height: 100%; transition: 1s;}
+        .card {
+            position: absolute;
+            padding: 20px;
+            border: 2px solid #ffd000;
+            background-color: #fff;
+            transition: 1s;
+        }
+        .card:hover {
+            background-color: #000;
+            color: #fff;
+            z-index: 5;
+        }
+        .card:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background-color: #ffd000;
+            left: 50%;
+            bottom: 100%;
+        }
+        .card:nth-child(1) {top: 7%; left: 10%; transform: translateY(-13%);}
+        .card:nth-child(2) {top: 10%; left: 32%; transform: translateY(-17%);}
+        .card:nth-child(3) {top: 8%; left: 52%; transform: translateY(-15%);}
+        .card:nth-child(4) {top: 7%; left: 72%; transform: translateY(-14%);}
+        .card:nth-child(5) {top: 23%; left: 15%; transform: translateY(-12%);}
+        .main_box:hover .card {transform: translateY(0);}
+        .end_card {
+            position: absolute; 
+            background-color: rgba(0,0,0,.6); 
+            color: #fff; 
+            width: 100%; 
+            height: 100%; 
+            margin: -20px;
+            font-size: 2em;
+            text-align: center;
+            line-height: 200px;
+        }
+        
+        .card .img_box {overflow: hidden;}
+        .card img {width: 400px; transition: 1s;}
+        .card img:hover {transform: scale(1.1);}
+        .card .card_desc {width: 400px;}
+        .card .card_desc p {font-size: 1.2em; margin-top: 10px; font-weight: 400;}
+        .card .card_desc p:nth-child(1) {font-size: 1.2em;}
+        .card .card_desc p:nth-child(2) {font-size: 1.8em; color: #ffd000;}
+        .card .card_desc p:nth-child(3) {font-size: 1.1em; color: #999; border-bottom: 1px solid #ffd000;}
+        .card .card_desc ul li {display: inline-block; vertical-align: top; margin-top: 5px;}
+        .card .card_desc ul li:nth-child(1) {width: 50px; border-right: 1px solid #ffd000;}
+        
+        @keyframes right_enter{
+            35% {transform: rotate(2deg); transform-origin: 50% -100%;}
+            60% {transform: rotate(-1deg); transform-origin: 50% -100%;}
+        }
+        @keyframes left_enter{
+            35% {transform: rotate(-2deg); transform-origin: 50% -100%;}
+            60% {transform: rotate(1deg); transform-origin: 50% -100%;}
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <div id="navigation"></div>
+    <div id="sub_header"></div>
+    <div id="sub_navigation_2">
+        <ul>
+            <li>전시마루</li>
+            <li>배움마루</li>
+            <li>강연마루</li>
+            <li>공연마루</li>
+            <li><a href="main.html#main_box_calendar">이달의 프로그램</a></li>
+        </ul>
+    </div>
+    
+    <div id="main">
+        <div id="title">전시마루</div>
+        <div class="main_box">
+            <div id="card_box_sum">
+                
+            <div class="card_box">
+                
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/je_01.jpg"></div>
+                <div class="card_desc">
+                    <p>2019 청춘마루</p>
+                    <p>Arti-Star 콜라보 展</p>
+                    <p>센스 넘치는 청춘 아티스트들의 크리에이티브한 작품을 만나보세요!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 7월 3일 - 8월 31일 <br>12:00~21:00 (주말 18:00)</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 2층 갤러리</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="end_card">종료되었습니다.</div>
+                <div class="img_box">
+                <img src="graphic/je_02.jpg"></div>
+                <div class="card_desc">
+                    <p>브릭사진가 이제형 작가 특별展</p>
+                    <p>스톰트루퍼's 라이프</p>
+                    <p>스타워즈 속 스톰트루퍼가 마치 짠내 나는 우리들 같은 재미있는 비하인드 스토리를 담은 작품을 만나보세요!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 6월 1일 – 6월 30일<br>12:00~21:00 (주말 18:00)</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 2층 갤러리</li>
+                    </ul>
+                </div>
+            </div>
+                
+            </div>
+                
+            <div class="card_box">
+                
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/ba_01.jpg"></div>
+                <div class="card_desc">
+                    <p>8월 아카데미</p>
+                    <p>조주기능사 맛보기 클래스</p>
+                    <p>칵테일에 대해 공부하고 직접 만들어 보는 시간!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 8월 7, 14, 21, 28일 <br>19:00~21:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 2F_아카데미룸</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/ba_02.jpg"></div>
+                <div class="card_desc">
+                    <p>8월 아카데미</p>
+                    <p>브이로그 클래스</p>
+                    <p>스마트폰 하나로 기획부터 촬영 및 편집까지! 한번에 끝내는 브이로그 클래스</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 8월 6, 13, 20, 27일 <br>19:00~21:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 2F_아카데미룸</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="end_card">종료되었습니다.</div>
+                <div class="img_box">
+                <img src="graphic/ba_03.jpg"></div>
+                <div class="card_desc">
+                    <p>MOS / PPT 족집게 강의</p>
+                    <p>7월 아카데미</p>
+                    <p>MOS PPT 자격증을 위한 꿀강의! 방학동안 자격증 하나라도 #득템해 보아요</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 7월 4일, 11일, 18일, 25일 <br>19:00~21:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 2층 아카데미실</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/ba_04.jpg"></div>
+                <div class="card_desc">
+                    <p>아티스트 장띵과 함께하는</p>
+                    <p>캐릭터 드로잉</p>
+                    <p>PUMA, VANS 콜라보 아티스트로 유명한 장띵(DDING)과 함께하는 DRAWING CLASS!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 6월 4일, 11일, 18일, 25일 <br>19:00~21:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 2층 아카데미실</li>
+                    </ul>
+                </div>
+            </div>
+                
+            </div>
+                
+            <div class="card_box">
+                
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/ga_01.jpg"></div>
+                <div class="card_desc">
+                    <p>공신 강성태와 함께하는</p>
+                    <p>수능 D-100일 특강</p>
+                    <p>수험생 다 드루와! 공신 강성태가 들려주는 수능 준비 이야기</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 8월 3일 (토)<br>14:00~15:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 B1F_스테이지</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/ga_02.jpg"></div>
+                <div class="card_desc">
+                    <p>한젬마의 아트 콜라보</p>
+                    <p>7월 북콘서트</p>
+                    <p>&lt;한젬마의 아트콜라보 수업&gt; 북 콘서트를 통해 미술이 비즈니스가 되는 활용법을 배워보세요!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 7월 3일<br>19:00~20:30</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 B1F 스테이지</li>
+                    </ul>
+                </div>
+            </div>
+                
+            </div>
+                
+            <div class="card_box">
+                
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/go_01.jpg"></div>
+                <div class="card_desc">
+                    <p>칠월칠일에는 청춘마루와 ㅊㅊ데이!</p>
+                    <p>ㅊㅊ데이 2부</p>
+                    <p>ㅊㅊ데이 2부에서 밴드계의 새로운 물결 새소년과, 싱어송라이터 카더가든을 만나실 수 있습니다!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 7월 7일<br>18:30~20:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 B1F 스테이지</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/go_02.jpg"></div>
+                <div class="card_desc">
+                    <p>칠월칠일에는 청춘마루와 ㅊㅊ데이!</p>
+                    <p>ㅊㅊ데이 1부</p>
+                    <p>ㅊㅊ데이 1부에서 어쿠스틱 최강자 마인드유와 감성 보컬 오반을 만나실 수 있습니다!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 7월 7일<br>17:00~18:30</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 B1F 스테이지</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/go_03.jpg"></div>
+                <div class="card_desc">
+                    <p>루프탑 X 맥주 X 영화 완벽한 조합</p>
+                    <p>청춘 옥상 영화제</p>
+                    <p>루프탑 X 맥주 X 영화의 완벽한 쓰리콤보!<br>6월 청춘 옥상 영화제에 초청합니다.</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 6월 28일<br>19:00~21:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 루프탑</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/go_04.jpg"></div>
+                <div class="card_desc">
+                    <p>감성충만 금요일 밤</p>
+                    <p>6월 청춘 콘서트</p>
+                    <p>축제 여신 케이시와 길구봉구의 녹아드는 목소리를 6월 청춘마루 청춘콘서트에서 만나보세요!</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 6월 21일<br>19:00~21:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 지하1층 스테이지</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img_box">
+                <img src="graphic/go_05.jpg"></div>
+                <div class="card_desc">
+                    <p>가을밤에 만나는</p>
+                    <p>청춘 옥상 영화제</p>
+                    <p>서울 독립영화제 추천작 &lt;여성의 시간들&gt;</p>
+                    <ul>
+                        <li>일시</li>
+                        <li>2019년 9월 20일 (금)<br>19:00~20:00</li>
+                    </ul>
+                    <ul>
+                        <li>장소</li>
+                        <li>청춘마루 루프탑</li>
+                    </ul>
+                </div>
+            </div>
+                
+            </div>
+                
+            </div>
+        </div>
+        <div class="main_box" style="display: none;"></div>
+    </div>
+    
+    <div id="footer"></div>
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $("#navigation").load("header.html");
+            $("#footer").load("footer.html");
+        });
+        
+        window.addEventListener('scroll', function() {
+        });
+        
+        $('#sub_navigation_2 li:not(:last-child)').click(function() {
+            $('#card_box_sum').css('transform','translateX('+($(this).index()*(-25))+'%)');
+            
+            switch($(this).index()){
+                case 0:
+                    $('#title').text('전시마루');
+                    break;
+                case 1:
+                    $('#title').text('배움마루');
+                    break;
+                case 2:
+                    $('#title').text('강연마루');
+                    break;
+                case 3:
+                    $('#title').text('공연마루');
+                    break;
+            }
+        });
+        
+        $('.card').on({
+            mouseenter:function(e) {
+            var element_center_x = $(this).offset().left + $(this).width()/2;
+            if(e.pageX-element_center_x >= 0)
+                $(this).css('animation','right_enter 1s 1');
+            else 
+                $(this).css('animation','left_enter 1s 1');
+            },
+            mouseleave:function() {
+                //$(this).css('animation','none');
+            }
+        });
+    </script>
+</html>

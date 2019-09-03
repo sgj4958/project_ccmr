@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" sizes="16x16 32x32" href="graphic/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <title>청춘마루 REMAKE</title>
+    <link href="common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style>
+        #main {background-color: #fff;}
+        .main_box {background-color: transparent;}
+        #sub_navigation a:nth-of-type(3) li {color: #ffd000;}
+        #main .main_box:nth-of-type(2) {height: 1150px; margin-top: 10%;}
+        #title {background-image: url(graphic/icon_membership.png); margin-top: 5%;}
+        
+        .barcode {
+            position: absolute;
+            background-image: url(graphic/membership_starbanking.png);
+            width: 450px;
+            height: 523px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: 35%;
+            z-index: 2;
+            border: 1px solid #ffd000;
+            box-shadow: 0 76px 65px 0 hsla(0,0%,45%,.5);
+        }
+        .barcode:last-of-type {
+            left: 40%; 
+            top: -10%; 
+            z-index: 1;
+            background: none;
+            border: none;
+            box-shadow: none;
+        }
+        .barcode:last-of-type >div {
+            width: 450px;
+            height: 523px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url(graphic/membership_liiv.png);
+            transform-origin: right;
+            border: 1px solid #ffd000;
+            transition: .3s;
+            box-shadow: 0 76px 65px 0 hsla(0,0%,45%,.5);
+        }
+        .barcode:last-of-type:hover {z-index: 3;}
+        .barcode:last-of-type:hover >div {transform: translateX(100px) rotate(5deg);}
+        .barcode a {    
+            display: block;
+            position: absolute;
+            left: 4.92857143rem;
+            top: 24.78571429rem;
+            bottom: auto;
+            width: 11.28571429rem;
+            height: 3.78571429rem;
+            background: transparent;
+            color: transparent;
+        }
+        .barcode a+a {left: 16.64285714rem;}
+        #main .main_box:nth-of-type(2) >p {font-size: 1.8em; text-align: center; border-bottom: 1px solid #000; margin-top: 32%;}
+        #main .main_box .barcode~ul {text-align: center; width: 100%; position: relative;}
+        #main .main_box .barcode~ul >li {display: inline-block; width: 100px; font-size: 1.4em; color: #ddd; cursor: pointer; font-weight: 700;}
+        .enter_permission {position: absolute; top: 50px; left: 20%;}
+        .enter_permission ol {padding-left: 100px;}
+        .enter_permission li {
+            display: inline-block; 
+            width: 270px;
+            font-size: 1.14285714rem;
+            line-height: 1.4; 
+            text-align: left; 
+            vertical-align: top; 
+            color: #000;
+            font-weight: 400;
+        }
+        .enter_permission p {color: #ffd000;}
+        #main .main_box .barcode~ul >li:nth-of-type(2) .enter_permission {display: none;}
+        #main .main_box .barcode~ul >li:nth-of-type(1) {color: #ffd000;}
+        .enter_permission img {animation: scissor .5s 1; cursor: auto;}
+        @keyframes scissor {
+            50% {transform-origin: left; transform: translateX(100px) rotate(5deg);}
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="navigation"></div>
+    <div id="header"></div>
+
+    
+    <div id="main">
+        <div id="title">청춘마루 멤버십</div>
+        <div class="main_box">
+            <div style="background-color: #f0f0f0; width: 100%; height: 400px; position: absolute; top: 5%;"></div>
+            <div class="barcode">
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.kbstar.kbbank&amp;hl=ko">Google Play</a> <a target="_blank" href="https://apps.apple.com/kr/app/kb%EC%8A%A4%ED%83%80%EB%B1%85%ED%82%B9/id373742138">App Store</a>
+            </div>
+            <div class="barcode">
+                <div></div>
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.kbstar.liivbank&amp;hl=ko">Google Play</a> <a target="_blank" href="https://apps.apple.com/kr/app/%EB%A6%AC%EB%B8%8C/id1126232922">App Store</a>
+            </div>
+            <p>출입인증</p>
+            <ul>
+                <li>KB 스타뱅킹
+                    <div class="enter_permission">
+                    <img src="graphic/membership_starbanking_step.png">
+                    <ol><li><p>Step1</p>우측 상단의 전체메뉴 클릭 </li><li><p>Step2</p>고객센터 클릭</li><li><p>Step3</p>지점찾기 번호표발행 클릭</li><li><p>Step4</p>청춘마루 &gt; 출입인증 클릭 <br>바코드 찍은 후 입장</li></ol></div>
+                </li>
+                <li>Liiv
+                    <div class="enter_permission">
+                    <img src="graphic/membership_liiv_step.png">
+                    <ol><li><p>Step1</p>우측 상단의 전체메뉴 클릭 </li><li><p>Step2</p>청춘마루 클릭</li><li><p>Step3</p>출입인증 클릭</li><li><p>Step4</p>바코드 찍은 후 입장</li></ol></div>
+                </li>
+            </ul>
+        </div>
+        <div class="main_box"></div>
+    </div>
+    
+    <div id="footer"></div>
+</body>
+    
+    <script>
+        $(document).ready( function() {
+            $("#navigation").load("header.html");
+            $("#footer").load("footer.html");
+            $("#header").load("sub_header.html");
+            
+        });
+        
+        window.addEventListener('scroll', function() {
+        });
+        
+        function enter_permission_reset() {
+            $('.enter_permission').css({display:'none'});
+            $('#main .main_box .barcode~ul >li').css('color','#ddd');
+        }
+        $('#main .main_box .barcode~ul >li:nth-of-type(1)').click(function(){
+            enter_permission_reset();
+            $('#main .main_box .barcode~ul >li:nth-of-type(1) .enter_permission').css({display:'block'});
+            $('#main .main_box .barcode~ul >li:nth-of-type(1)').css({color:'#ffd000'});
+        });
+        $('#main .main_box .barcode~ul >li:nth-of-type(2)').click(function(){
+            enter_permission_reset();
+            $('#main .main_box .barcode~ul >li:nth-of-type(2) .enter_permission').css({display:'block'});
+            $('#main .main_box .barcode~ul >li:nth-of-type(2)').css({color:'#ffd000'});
+        });
+        
+    </script>
+</html>
